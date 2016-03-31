@@ -1,0 +1,20 @@
+Reset mysql root password
+
+1. Stop the MySQL service.
+
+    service mysql stop
+2. Start MySQL without password and permission checks.
+
+   mysqld_safe --skip-grant-tables &
+3. Press [ENTER] again if your output is halted.
+
+4. Connect to MySQL.
+
+    mysql -u root mysql
+5. Run following commands to set a new password for root user. Substitute NEW_PASSWORD with your new password.
+
+    UPDATE user SET password=PASSWORD('NEW_PASSWORD') WHERE user='root';
+    FLUSH PRIVILEGES;
+6. Restart the MySQL service.
+
+    service mysql restart
