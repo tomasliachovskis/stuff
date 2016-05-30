@@ -1,0 +1,8 @@
+Using Virtual Box
+Unfortunately, Virtual Box cannot resize VMDKs, but it can resize VDI images. So, we will convert the disk to a VDI, and then increase its size.
+Shut down the VM.
+Find the location of the VMDK (e.g. /Users/<user>/VirtualBox VMs/<VM Name>/)
+$ cd "~/VirtualBox VMs/<VM Name>/"
+Using VBoxManage to clone the image and resize it.
+$ VBoxManage clonehd <VMDK Name>.vmdk clone.vdi --format vdi
+$ VBoxManage modifyhd clone.vdi --resize 20480 #size in MB (20 GB)
